@@ -1,0 +1,12 @@
+.stars {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: 787px 1419px #fff, 1937px 1824px #fff, 1874px 1410px #fff, 343px 1222px #fff, 1980px 1426px #fff, 1393px 1905px #fff, 1857px 1741px #fff, 638px 1995px #fff, 962px 1723px #fff, 1256px 1719px #fff, 1816px 1842px #fff, 1181px 1807px #fff, 1185px 1654px #fff, 1753px 1747px #fff, 1991px 1849px #fff, 1225px 1906px #fff, 380px 1291px #fff, 1496px 1590px #fff, 1103px 1998px #fff, 543px 1883px #fff, 1232px 1457px #fff, 1697px 1853px #fff, 1656px 1983px #fff, 1424px 1602px #fff, 1181px 1875px #fff, 1508px 1924px #fff, 1743px 1420px #fff, 194px 1540px #fff, 1301px 1714px #fff, 1828px 1581px #fff;
+    animation: animateStars 50s linear infinite;
+  }
+
+  @keyframes animateStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); }
+  }

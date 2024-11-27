@@ -1,0 +1,64 @@
+<!-- <app-title [title]="title"></app-title> -->
+<div
+  class="ccard border border-[#5ccedf] transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:bg-[#5ccedf] hover:border-white p-6 rounded-lg text-center cursor-pointer"
+  (click)="toggleDropdown()"
+>
+  <!-- Título de la tarjeta -->
+  <h2 class="text-xl font-semibold mb-4">{{ title }}</h2>
+  <div class="mt-4">
+    @if(isOpen){
+    <div
+      class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"
+    >
+      <div class="flex items-center justify-between mb-4">
+        <h5
+          class="text-xl font-bold leading-none text-gray-900 dark:text-white"
+        >
+          Puedes ir
+        </h5>
+        <a
+          href="#"
+          class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
+        >
+          Ver todo
+        </a>
+      </div>
+      <div class="flow-root">
+        <!-- Mostrar un spinner mientras se cargan los datos -->
+        <div *ngIf="isLoading" class="flex justify-center items-center my-4">
+          <p>Cargando...</p>
+        </div>
+
+        <!-- Lista de resultados -->
+        <ul *ngIf="!isLoading && filteredTipos.length > 0">
+          <li
+            *ngFor="let tipo of filteredTipos"
+            class="py-2 border-b border-gray-600 hover:bg-gray-700 cursor-pointer"
+            (click)="navigateToDetails(tipo.id)"
+          >
+            <div class="flex items-center gap-4">
+              <img
+                [src]="tipo.icoTipo"
+                alt="{{ tipo.nombreTipo }}"
+                class="w-8 h-8 rounded-full filter invert"
+                style="filter: brightness(0) invert(1)"
+              />
+              <div>
+                <p class="font-semibold">{{ tipo.nombreTipo }}</p>
+                <p class="text-sm text-gray-400">{{ tipo.descripcion }}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <!-- Mensaje de error o sin resultados -->
+        <div
+          *ngIf="!isLoading && filteredTipos.length === 0"
+          class="text-center"
+        >
+          <p>No hay datos disponibles para "{{ title }}"</p>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
