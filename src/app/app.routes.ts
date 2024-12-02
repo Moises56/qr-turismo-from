@@ -1,32 +1,41 @@
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+// import { APP_ROUTES } from './app.routes';
 
 export const routes: Routes = [
-  // landing page
   {
     path: 'landing',
-    title: 'landing',
+    title: 'Landing',
     loadComponent: () =>
       import('./views/landinpage/landinpage.component').then((m) => m.default),
   },
   {
+    path: 'lugares',
+    title: 'Lugares',
+    loadComponent: () =>
+      import('./views/lugares/lugares.component').then((m) => m.default),
+  },
+  {
     path: 'dashboard',
     loadComponent: () =>
-      import('./dashboard/pages/dashboard/dashboard.component'),
+      import('./dashboard/pages/dashboard/dashboard.component').then(
+        (m) => m.default
+      ),
     children: [
       {
         path: 'sites/:id',
-        title: 'lugares',
-        loadComponent: () => import('./dashboard/pages/sites/sites.component'),
+        title: 'Lugares',
+        loadComponent: () =>
+          import('./dashboard/pages/sites/sites.component').then(
+            (m) => m.default
+          ),
       },
-
       {
         path: '',
-        redirectTo: 'landing',
+        redirectTo: '/landing',
         pathMatch: 'full',
       },
     ],
   },
-
   {
     path: '',
     redirectTo: '/landing',

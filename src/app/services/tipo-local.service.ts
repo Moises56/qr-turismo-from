@@ -34,13 +34,12 @@ export class TipoLocalService {
 
   constructor() {}
 
-  // get all tipo local
   // Llamada para obtener todos los tipos de locales
   GetTipoLocal() {
     if (this.#state().tipoLocal.length === 0) {
       // Solo realiza la solicitud si no se han cargado datos previamente
       this.http
-        .get<TipoLocal[]>(`${environment.apiUrl}`)
+        .get<TipoLocal[]>(`${environment.apiUrl}/tipo-local`)
         .pipe(
           delay(1500),
           catchError((error) => {
@@ -58,30 +57,28 @@ export class TipoLocalService {
         });
     }
   }
-  // get filter-by-description
   // Llamada para obtener tipo local por descripción
   GetFilterByDescription(description: string) {
-    console.log('GetFilterByDescription', description);
+    // console.log('tLocal.service', description);
     return this.http
       .get<TipoLocal[]>(
-        `${environment.apiUrl}/filter-by-description/${description}`
+        `${environment.apiUrl}/tipo-local/filter-by-description/${description}`
       )
-      .pipe(delay(1500));
-  }
+      .pipe(
+        delay(1500),
+        catchError((error) => {
+          console.error('Error al obtener datos', error);
+          // Establece los valores por defecto en caso de error
+          this.#state.set({ loading: false, tipoLocal: [] });
+          return of([]); // Retorna un array vacío en caso de error
+        })
+      );
 
-  // GetAllTypes(): Observable<{ [key: string]: TipoLocal[] }> {
-  //   return this.http.get<TipoLocal[]>(`${environment.apiUrl}/tipos`).pipe(
-  //     delay(1500),
-  //     map((tipos) => {
-  //       // Agrupar los tipos por descripción
-  //       return tipos.reduce((acc, tipo) => {
-  //         if (!acc[tipo.descripcion]) {
-  //           acc[tipo.descripcion] = [];
-  //         }
-  //         acc[tipo.descripcion].push(tipo);
-  //         return acc;
-  //       }, {} as { [key: string]: TipoLocal[] });
-  //     })
-  //   );
-  // }
+    // .subscribe((res) => {
+    //   this.#state.set({
+    //     loading: false,
+    //     tipoLocal: res,
+    //   });
+    // });
+  }
 }

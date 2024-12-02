@@ -35,11 +35,11 @@ export class Card1Component {
   }
 
   loadFilteredTipos(description: string): void {
-    console.log('Loading filtered types:', description);
+    // console.log('Card1 types:', description);
     this.isLoading = true;
     this.tLocalService.GetFilterByDescription(description).subscribe({
       next: (data) => {
-        console.log('Filtered types:', data);
+        // console.log('Card1 Filtered types:', data);
         this.filteredTipos = data;
         this.isLoading = false;
       },
@@ -52,6 +52,7 @@ export class Card1Component {
 
   // Navegación al detalle con los datos cargados
   navigateToDetails(id: string): void {
-    this.router.navigate(['/dashboard/sites', { id }]);
+    console.log('Navigate to:', id);
+    //this.router.navigate(['/dashboard/sites', { id }]);
   }
 }

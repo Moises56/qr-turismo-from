@@ -1,6 +1,234 @@
-<app-title [title]="title"></app-title>
+<!-- <app-navbar /> -->
 
-<div class="text-center">
-  <h1 class="text-3xl font-bold">{{ siteName }}</h1>
-  <p class="text-gray-400">Explore more about {{ siteName }} here.</p>
+<div class="min-h-screen bg-gray-900 text-white">
+  <!-- Header -->
+  <header class="flex items-center justify-between p-4 bg-gray-800 shadow-lg">
+    <!-- Botón del menú móvil -->
+    <button
+      class="sm:hidden text-white text-2xl hover:text-gray-400 focus:outline-none"
+      aria-label="Abrir menú"
+      (click)="toggleProfileMenu()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+        />
+      </svg>
+    </button>
+
+    <!-- Barra de navegación para pantallas grandes -->
+    <nav class="hidden sm:flex gap-6 text-sm font-semibold text-gray-300">
+      <a href="#" class="hover:text-white transition duration-200 ease-in-out"
+        >HOME</a
+      >
+      <a
+        [routerLink]="['/lugares']"
+        class="hover:text-white transition duration-200 ease-in-out"
+        >LUGARES</a
+      >
+      <a href="#" class="hover:text-white transition duration-200 ease-in-out"
+        >EXPLORAR</a
+      >
+      <a href="#" class="hover:text-white transition duration-200 ease-in-out"
+        >EVENTOS</a
+      >
+    </nav>
+
+    <!-- Menú desplegable para pantallas móviles -->
+    <div
+      *ngIf="isProfileMenuOpen"
+      class="absolute top-16 left-0 w-full bg-gray-800 text-gray-300 shadow-lg sm:hidden"
+    >
+      <ul class="flex flex-col items-center space-y-4 py-4">
+        <li><a href="#" class="hover:text-white">HOME</a></li>
+        <li>
+          <a [routerLink]="['/lugares']" class="hover:text-white">LUGARES</a>
+        </li>
+        <li><a href="#" class="hover:text-white">EXPLORAR</a></li>
+        <li><a href="#" class="hover:text-white">EVENTOS</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Menú lateral -->
+  <!-- Encierra todo en una clase general -->
+  <div class="relative min-h-screen bg-gray-900 text-white">
+    <!-- Menú lateral -->
+    <div
+      class="fixed top-0 left-0 h-full w-64 bg-gray-900 shadow-lg z-50 transition-transform transform"
+      [ngClass]="{ 'translate-x-0': menuOpen, '-translate-x-full': !menuOpen }"
+    >
+      <div
+        class="p-4 flex justify-between items-center text-xl font-bold border-b border-gray-700"
+      >
+        <span>AMDC</span>
+        <button
+          (click)="closeMenu()"
+          class="text-white text-2xl hover:text-gray-400 focus:outline-none"
+          aria-label="Cerrar menú"
+        >
+          &times;
+        </button>
+      </div>
+      <ul class="space-y-4 p-4">
+        <li><a href="#" class="hover:text-blue-500">Inicio</a></li>
+        <li>
+          <a [routerLink]="['/lugares']" class="hover:text-blue-500">Lugares</a>
+        </li>
+        <li><a href="#" class="hover:text-blue-500">Explorar</a></li>
+        <li><a href="#" class="hover:text-blue-500">Eventos</a></li>
+        <li>
+          <a [routerLink]="['/lugares']" class="hover:text-blue-500"
+            >Lugares de interés</a
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- <ul class="space-y-4 p-4">
+      <li *ngFor="let item of menuItems">
+        <a [routerLink]="item.path" class="hover:text-blue-500">{{
+          item.title
+        }}</a>
+      </li>
+    </ul> -->
+
+    <!-- Sección principal -->
+    <main class="relative z-10">
+      <section class="p-6">
+        @for (item of tLocalService.lugares(); track item.id) {
+
+        <div
+          class="relative h-screen bg-cover bg-center z-0"
+          style="background-image: url('{{ item.baner }}');"
+        >
+          <div class="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
+          <div
+            class="flex flex-col items-center justify-center h-full z-10 relative"
+          >
+            <h1 class="text-6xl font-bold text-white mb-4 text-center">
+              {{ item.nombre }}
+            </h1>
+            <p class="text-2xl text-white mb-8 text-center">
+              {{ item.descripcion }}
+            </p>
+            <div class="flex space-x-4">
+              <button
+                [routerLink]="['/dashboard/sites/1']"
+                class="bg-white text-green-500 font-medium py-2 px-4 rounded-lg hover:bg-gray-200"
+                aria-label="Explorar"
+              >
+                Explorar
+              </button>
+              <button
+                class="bg-green-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-green-600"
+                aria-label="Acerca de"
+              >
+                Acerca de
+              </button>
+            </div>
+          </div>
+        </div>
+        }
+      </section>
+
+      <!-- Categorías -->
+      <!-- <section class="p-6 flex flex-wrap justify-center gap-4">
+      <div class="bg-gray-900 py-16 text-white">
+        <div
+          class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          <app-card1 *ngFor="let tipo of tipos" [title]="tipo"> </app-card1>
+        </div>
+      </div>
+    </section> -->
+
+      <section class="p-6 flex flex-wrap justify-center gap-4">
+        <div class="bg-gray-900 py-16 text-white w-full">
+          <div
+            class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
+          >
+            <app-card1 *ngFor="let tipo of tipos" [title]="tipo"> </app-card1>
+          </div>
+        </div>
+      </section>
+
+      <!-- Atracciones -->
+      <!-- <section class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> -->
+
+      <section
+        class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+      >
+        <div class="bg-gray-800 p-4 rounded">
+          <img
+            src="https://via.placeholder.com/50"
+            alt="Atracción 1"
+            class="w-full rounded"
+          />
+          <h3 class="text-lg font-bold mt-4">Atracción 1</h3>
+          <p class="text-sm text-gray-400">
+            Descripción breve de la atracción 1.
+          </p>
+        </div>
+        <!-- Repeat for other attractions -->
+        <div class="bg-gray-800 p-4 rounded">
+          <img
+            src="https://via.placeholder.com/50"
+            alt="Museo"
+            class="w-full rounded"
+          />
+          <h3 class="text-lg font-bold mt-4">Atracción 2</h3>
+          <p class="text-sm text-gray-400">
+            Descripción breve de la atracción 2.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded">
+          <img
+            src="https://via.placeholder.com/50"
+            alt="Parque"
+            class="w-full rounded"
+          />
+          <h3 class="text-lg font-bold mt-4">Atracción 3</h3>
+          <p class="text-sm text-gray-400">
+            Descripción breve de la atracción 3.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded">
+          <img
+            src="https://via.placeholder.com/50"
+            alt="Restaurante"
+            class="w-full rounded"
+          />
+          <h3 class="text-lg font-bold mt-4">Atracción 4</h3>
+          <p class="text-sm text-gray-400">
+            Descripción breve de la atracción 4.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded">
+          <img
+            src="https://via.placeholder.com/50"
+            alt="Teatro"
+            class="w-full rounded"
+          />
+          <h3 class="text-lg font-bold mt-4">Atracción 5</h3>
+          <p class="text-sm text-gray-400">
+            Descripción breve de la atracción 5.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-4 bg-gray-800 text-center text-sm text-gray-500">
+      © 2024 AMDC. Todos los derechos reservados.
+    </footer>
+  </div>
 </div>

@@ -1,11 +1,19 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter, withViewTransitions } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { provideClientHydration } from '@angular/platform-browser';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
 
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(withFetch()),
+
     provideRouter(
       routes,
       withViewTransitions({
@@ -15,6 +23,9 @@ export const appConfig: ApplicationConfig = {
         // },
       })
     ),
+    provideClientHydration(),
+    provideHttpClient(),
+
     importProvidersFrom(HttpClientModule),
   ],
 };

@@ -47,11 +47,11 @@ export default class LandinpageComponent {
   }
 
   navigateToDetail(tipo: string): void {
-    console.log('Loading filtered types:', tipo);
+    console.log('landinpage.component:Loading filtered types:', tipo);
     // this.isLoading = true;
     this.tLocalService.GetFilterByDescription(tipo).subscribe({
       next: (data) => {
-        console.log('Filtered types:', data);
+        console.log('landinpage.componentFiltered types:', data);
         this.filteredTipos = data;
         this.isLoading = false;
       },
@@ -60,7 +60,7 @@ export default class LandinpageComponent {
         this.isLoading = false;
       },
     });
-    this.router.navigate(['/dashboard/sites', { type: tipo }]);
+    // this.router.navigate(['/dashboard/sites', { type: tipo }]);
   }
 
   // Función para filtrar los datos por descripción
