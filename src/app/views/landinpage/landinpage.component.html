@@ -1,5 +1,5 @@
-<!-- <app-title [title]="title"></app-title> -->
-<div class="relative h-screen bg-gradient-to-r from-green-500 to-blue-500">
+<div class="relative h-screen bg-gradient-to-r from-teal-300 to-amber-300">
+  <!-- <app-particula-nieve /> -->
   <div class="absolute inset-0 stars"></div>
   <div class="flex flex-col items-center justify-center h-full z-10">
     <h1 class="text-6xl font-bold text-white mb-4">
@@ -11,18 +11,18 @@
     </p>
     <div class="flex space-x-4">
       <button
-        [routerLink]="['/dashboard/sites/1']"
-        class="bg-white text-green-500 font-medium py-2 px-4 rounded-lg hover:bg-gray-200"
+        [routerLink]="['/dashboard/sites']"
+        class="bg-white text-teal-300 font-medium py-2 px-4 rounded-lg hover:bg-gray-200"
         aria-label="Explorar"
       >
-        Explorar
+        Tu Viaje Comienza Aquí
       </button>
-      <button
+      <!-- <button
         class="bg-green-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-green-600"
         aria-label="Acerca de"
       >
         Acerca de
-      </button>
+      </button> -->
     </div>
   </div>
 </div>
@@ -36,6 +36,7 @@
 </div> -->
 
 <div class="bg-gray-900 py-16 text-white w-full">
+  <!-- <app-particle /> -->
   <div
     class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
   >
@@ -45,68 +46,90 @@
 
 <!--  -->
 <div class="bg-gray-800 py-16 text-white scroll-smooth">
+  <!-- <app-particle /> -->
   <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-4">Explore Honduras with Local Guides</h2>
+    <h2 class="text-3xl font-bold mb-4">Explorar</h2>
     <div class="grid grid-cols-3 gap-8 mt-8">
       <div>
         <img
-          src="https://picsum.photos/200/300?grayscale"
+          src="https://res.cloudinary.com/dcbdrzhh1/image/upload/f_auto,q_auto/v1/qr/ugqmz6ggt2d2s9qnftid"
           alt="Guide"
           class="rounded-full mx-auto mb-2"
         />
-        <h3 class="text-xl font-bold">Maria Fernandez</h3>
-        <p class="text-gray-400">Mayan Ruins Tour Guide</p>
+        <h3 class="text-xl font-bold">El Picacho</h3>
+        <p class="text-gray-400">Tegucigalpa, Cerro El Picacho</p>
       </div>
       <div>
         <img
-          src="https://picsum.photos/id/870/200/300?grayscale&blur=2"
+          src="https://res.cloudinary.com/dcbdrzhh1/image/upload/f_auto,q_auto/v1/qr/x0fzlgku2dtkk9xwhak9"
           alt="Guide"
           class="rounded-full mx-auto mb-2"
         />
-        <h3 class="text-xl font-bold">Juan Reyes</h3>
-        <p class="text-gray-400">Scuba Diving Instructor</p>
+        <h3 class="text-xl font-bold">Teatro Nacional Manuel Bonilla</h3>
+        <p class="text-gray-400">Tegucigalpa, Barrio La Ronda</p>
       </div>
       <div>
         <img
-          src="https://picsum.photos/seed/picsum/200/300"
+          src="https://res.cloudinary.com/dcbdrzhh1/image/upload/f_auto,q_auto/v1/qr/he2a26wqeo4bqyhcvswv"
           alt="Guide"
           class="rounded-full mx-auto mb-2"
         />
-        <h3 class="text-xl font-bold">Ana Gomez</h3>
-        <p class="text-gray-400">Rainforest Hiking Guide</p>
-      </div>
-    </div>
-  </div>
-</div>
-<!--  -->
-<div class="bg-gray-900 py-16 text-white scroll-smooth">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-4">Plan Your Honduras Adventure</h2>
-    <div class="grid grid-cols-4 gap-4 mt-8">
-      <div class="bg-gray-800 p-4 rounded-lg">
-        <h3 class="text-xl font-bold mb-2">Transportation</h3>
-        <p class="text-gray-400">Explore our transportation options</p>
-      </div>
-      <div class="bg-gray-800 p-4 rounded-lg">
-        <h3 class="text-xl font-bold mb-2">Accommodations</h3>
-        <p class="text-gray-400">Find the perfect place to stay</p>
-      </div>
-      <div class="bg-gray-800 p-4 rounded-lg">
-        <!-- img -->
-        <img
-          class="w-8 h-8 rounded-full mx-auto mb-2 group-hover/edit:translate-x-0.5 group-hover/edit:text-slate-500"
-          src="https://res.cloudinary.com/dcbdrzhh1/image/upload/f_auto,q_auto/v1/qr/icon/akubwuwzgaqqfekhdcnc"
-          alt="Neil image"
-        />
-        <h3 class="text-xl font-bold mb-2">Attractions</h3>
-        <p class="text-gray-400">Discover our top tourist sites</p>
-      </div>
-      <div class="bg-gray-800 p-4 rounded-lg">
-        <h3 class="text-xl font-bold mb-2">Contact Us</h3>
-        <p class="text-gray-400">Get in touch with our team</p>
+        <h3 class="text-xl font-bold">Parque La Leona</h3>
+        <p class="text-gray-400">Tegucigalpa, Centro Histórico</p>
       </div>
     </div>
   </div>
 </div>
 
+<!--  -->
+<div class="bg-gray-900 py-16 text-white scroll-smooth">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4">Servicios</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <img
+          class="w-8 h-8 rounded-full mx-auto mb-2 group-hover/edit:translate-x-0.5 group-hover/edit:text-slate-500"
+          src="https://res.cloudinary.com/dcbdrzhh1/image/upload/f_auto,q_auto/v1/qr/icon/y46mnvbxoefeq1tipgh3"
+          alt="AMDC"
+        />
+        <h3 class="text-xl font-bold mb-2">Transportes</h3>
+        <p class="text-gray-400">Ver los transportes</p>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <img
+          class="w-8 h-8 rounded-full mx-auto mb-2 group-hover/edit:translate-x-0.5 group-hover/edit:text-slate-500"
+          src="https://res.cloudinary.com/dcbdrzhh1/image/upload/f_auto,q_auto/v1/qr/icon/ce8xq98dznng3fplmjkj"
+          alt="AMDC"
+        />
+        <h3 class="text-xl font-bold mb-2">AMDC</h3>
+        <p class="text-gray-400">Ir a la web</p>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <img
+          class="w-8 h-8 rounded-full mx-auto mb-2 group-hover/edit:translate-x-0.5 group-hover/edit:text-slate-500"
+          src="https://res.cloudinary.com/dcbdrzhh1/image/upload/f_auto,q_auto/v1/qr/icon/syfkhvhqi9sabptkydbc"
+          alt="AMDC"
+        />
+        <h3 class="text-xl font-bold mb-2">Linea 100</h3>
+        <p class="text-gray-400">Reportes a la linea 100</p>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <img
+          class="w-8 h-8 rounded-full mx-auto mb-2 group-hover/edit:translate-x-0.5 group-hover/edit:text-slate-500"
+          src="https://res.cloudinary.com/dcbdrzhh1/image/upload/f_auto,q_auto/v1/qr/icon/gqyhlnjv4duxfnmiwj1h"
+          alt="AMDC"
+        />
+        <h3 class="text-xl font-bold mb-2">Emergencias</h3>
+        <p class="text-gray-400">Reporte al 911</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="p-4 bg-gray-800 text-center text-sm text-gray-500">
+  <!-- <app-particle /> -->
+  © 2024 AMDC. Todos los derechos reservados.
+</footer>
+
+<!-- <app-particle /> -->
 <router-outlet></router-outlet>

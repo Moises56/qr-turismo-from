@@ -6,13 +6,12 @@ import { routes } from '../../../app.routes';
 import { ActivatedRoute } from '@angular/router';
 import { LugaresTuristicosService } from '@services/lugares-turisticos.service';
 import { LugaresTuristicos } from '@interfaces/lugares-turisticos';
-import { Card1Component } from '../../../components/card1/card1.component';
 import { NavbarComponent } from '../../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-sites',
   standalone: true,
-  imports: [CommonModule, RouterModule, Card1Component, NavbarComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './sites.component.html',
   styleUrl: './sites.component.css',
 })
@@ -26,6 +25,7 @@ export default class SitesComponent {
   public tLocalService = inject(LugaresTuristicosService);
   isProfileMenuOpen = false;
   menuOpen: boolean = false;
+  isMenuOpen = false; // Estado del menú
   siteName: string | null = null;
   title: string = 'Lugares';
 
@@ -40,16 +40,21 @@ export default class SitesComponent {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    // AOS.init({
+    //   duration: 1000, // Duración de la animación en ms
+    //   easing: 'ease-in-out', // Estilo de animación
+    //   once: true, // Ejecuta la animación solo una vez
+    // });
     this.siteName = this.route.snapshot.paramMap.get('site');
     this.loadSites();
   }
 
   toggleMenu(): void {
-    this.menuOpen = !this.menuOpen;
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
   closeMenu(): void {
-    this.menuOpen = false;
+    this.isMenuOpen = false;
   }
 
   // Llamada para obtener todos los lugares turisticos

@@ -59,3 +59,19 @@ header ul li a {
   padding: 0.5rem 1rem;
   display: block;
 }
+
+div h1 {
+  color: lightblue !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.8) !important;
+}
+
+header {
+  /* background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%; */
+}

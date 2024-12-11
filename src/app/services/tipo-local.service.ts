@@ -4,6 +4,7 @@ import { delay, map, Observable } from 'rxjs';
 import { TipoLocal } from '@interfaces/tipo-local';
 import { environment } from '@environments/environment';
 import { catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 
 // interfaces State
@@ -58,27 +59,45 @@ export class TipoLocalService {
     }
   }
   // Llamada para obtener tipo local por descripción
+  // GetFilterByDescription(description: string) {
+  //   // console.log('tLocal.service', description);
+  //   return this.http
+  //     .get<TipoLocal[]>(
+  //       `${environment.apiUrl}/tipo-local/filter-by-description/${description}`
+  //     )
+  //     .pipe(
+  //       delay(1500),
+  //       catchError((error) => {
+  //         console.error('Error al obtener datos', error);
+  //         // Establece los valores por defecto en caso de error
+  //         this.#state.set({ loading: false, tipoLocal: [] });
+  //         return of([]); // Retorna un array vacío en caso de error
+  //       })
+  //     );
+  // }
+
   GetFilterByDescription(description: string) {
-    // console.log('tLocal.service', description);
     return this.http
       .get<TipoLocal[]>(
-        `${environment.apiUrl}/tipo-local/filter-by-description/${description}`
+        `${environment.apiUrl}/tipo-local/filter-by-description/${description}`,
+        { observe: 'response' } // Observa la respuesta completa (incluyendo el cuerpo)
       )
       .pipe(
         delay(1500),
+        map((response) => {
+          // Asegúrate de que el cuerpo sea JSON
+          if (response.body && typeof response.body === 'object') {
+            return response.body;
+          } else {
+            console.error('La respuesta no es un JSON válido', response.body);
+            return [];
+          }
+        }),
         catchError((error) => {
           console.error('Error al obtener datos', error);
-          // Establece los valores por defecto en caso de error
           this.#state.set({ loading: false, tipoLocal: [] });
           return of([]); // Retorna un array vacío en caso de error
         })
       );
-
-    // .subscribe((res) => {
-    //   this.#state.set({
-    //     loading: false,
-    //     tipoLocal: res,
-    //   });
-    // });
   }
 }

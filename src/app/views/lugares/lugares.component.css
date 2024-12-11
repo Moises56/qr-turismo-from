@@ -1,6 +1,41 @@
-div h1 {
-  color: black !important;
+/* div h1 {
+  color: rgb(201, 218, 219) !important;
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.5),
     0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.8) !important;
+} */
+
+div h1 {
+  color: #db473c !important;
+  text-shadow: 0 0 10px rgb(59 80 80 / 50%), 0 0 20px rgb(127 201 201 / 50%),
+    0 0 30px rgb(122 173 173 / 50%), 0 0 40px rgb(21 71 71 / 80%) !important;
 }
-  
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+}
+
+/* Estilos del modal */
+.fixed {
+  position: fixed;
+}
+.inset-0 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.z-50 {
+  z-index: 50;
+}
+.max-height-90vh {
+  max-height: 90vh;
+}

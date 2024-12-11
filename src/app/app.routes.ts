@@ -9,7 +9,7 @@ export const routes: Routes = [
       import('./views/landinpage/landinpage.component').then((m) => m.default),
   },
   {
-    path: 'lugares',
+    path: 'lugares/:id',
     title: 'Lugares',
     loadComponent: () =>
       import('./views/lugares/lugares.component').then((m) => m.default),
@@ -22,7 +22,7 @@ export const routes: Routes = [
       ),
     children: [
       {
-        path: 'sites/:id',
+        path: 'sites',
         title: 'Lugares',
         loadComponent: () =>
           import('./dashboard/pages/sites/sites.component').then(

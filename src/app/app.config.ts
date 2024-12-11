@@ -6,14 +6,19 @@ import {
   provideHttpClient,
   withFetch,
   withInterceptors,
+  withInterceptorsFromDi,
+  withJsonpSupport,
 } from '@angular/common/http';
 
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withFetch()),
-
+    provideHttpClient(
+      withFetch(),
+      withInterceptorsFromDi(),
+      withJsonpSupport()
+    ),
     provideRouter(
       routes,
       withViewTransitions({

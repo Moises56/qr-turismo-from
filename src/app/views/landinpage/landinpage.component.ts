@@ -1,9 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { Router, RouterModule } from '@angular/router';
-import SitesComponent from '../../dashboard/pages/sites/sites.component';
 import { Card1Component } from '../../components/card1/card1.component';
 import { TipoLocalService } from '@services/tipo-local.service';
 import { TipoLocal } from '@interfaces/tipo-local';

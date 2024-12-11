@@ -11,7 +11,12 @@
     1232px 1457px #fff, 1697px 1853px #fff, 1656px 1983px #fff,
     1424px 1602px #fff, 1181px 1875px #fff, 1508px 1924px #fff,
     1743px 1420px #fff, 194px 1540px #fff, 1301px 1714px #fff,
-    1828px 1581px #fff;
+    1997px 1997px #fff, 1997px 1997px #fff, 1997px 1997px #fff,
+    1997px 1997px #fff, 1997px 1997px #fff, 1997px 1997px #fff,
+    1997px 1997px #fff, 1997px 1997px #fff, 1997px 1997px #fff,
+    1997px 1997px #fff, 1997px 1997px #fff, 1997px 1997px #fff,
+    1997px 1997px #fff, 1997px 1997px #fff, 1997px 1997px #fff,
+    1997px 1997px #fff, 1828px 1581px #fff;
   animation: animateStars 50s linear infinite;
 }
 
@@ -26,6 +31,7 @@
 
 div h1 {
   color: rgb(20, 61, 75) !important;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.5),
-    0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.8) !important;
+  text-shadow: 0 0 10px rgba(21, 71, 71, 0.496),
+    0 0 20px rgba(23, 145, 145, 0.5), 0 0 30px rgba(84, 93, 93, 0.5),
+    0 0 40px rgba(65, 138, 138, 0.8) !important;
 }

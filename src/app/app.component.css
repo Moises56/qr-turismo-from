@@ -1,0 +1,15 @@
+/* app.component.css */
+:host {
+  display: block;
+  position: relative;
+  height: 100%;
+}
+
+app-snow-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Mantén el efecto detrás del contenido */
+}

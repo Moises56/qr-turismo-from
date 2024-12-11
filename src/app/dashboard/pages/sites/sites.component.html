@@ -2,60 +2,77 @@
 
 <div class="min-h-screen bg-gray-900 text-white">
   <!-- Header -->
-  <header class="flex items-center justify-between p-4 bg-gray-800 shadow-lg">
-    <!-- Botón del menú móvil -->
-    <button
-      class="sm:hidden text-white text-2xl hover:text-gray-400 focus:outline-none"
-      aria-label="Abrir menú"
-      (click)="toggleProfileMenu()"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6"
+  <header
+    class="fixed top-0 left-0 w-full bg-gray-800 text-white shadow-lg z-50"
+  >
+    <div class="flex items-center justify-between p-4">
+      <!-- Botón del menú móvil -->
+      <button
+        class="sm:hidden text-white text-2xl hover:text-gray-400 focus:outline-none"
+        aria-label="Abrir menú"
+        (click)="toggleMenu()"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
-        />
-      </svg>
-    </button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+          />
+        </svg>
+      </button>
 
-    <!-- Barra de navegación para pantallas grandes -->
-    <nav class="hidden sm:flex gap-6 text-sm font-semibold text-gray-300">
-      <a href="#" class="hover:text-white transition duration-200 ease-in-out"
-        >HOME</a
-      >
-      <a
-        [routerLink]="['/lugares']"
-        class="hover:text-white transition duration-200 ease-in-out"
-        >LUGARES</a
-      >
-      <a href="#" class="hover:text-white transition duration-200 ease-in-out"
-        >EXPLORAR</a
-      >
-      <a href="#" class="hover:text-white transition duration-200 ease-in-out"
-        >EVENTOS</a
-      >
-    </nav>
+      <!-- Barra de navegación -->
+      <nav class="hidden sm:flex gap-6 text-sm font-semibold text-gray-300">
+        <a href="#" class="hover:text-white transition duration-200 ease-in-out"
+          >HOME</a
+        >
+        <a
+          [routerLink]="['/lugares']"
+          class="hover:text-white transition duration-200 ease-in-out"
+          >LUGARES</a
+        >
 
-    <!-- Menú desplegable para pantallas móviles -->
-    <div
-      *ngIf="isProfileMenuOpen"
-      class="absolute top-16 left-0 w-full bg-gray-800 text-gray-300 shadow-lg sm:hidden"
-    >
-      <ul class="flex flex-col items-center space-y-4 py-4">
-        <li><a href="#" class="hover:text-white">HOME</a></li>
-        <li>
-          <a [routerLink]="['/lugares']" class="hover:text-white">LUGARES</a>
-        </li>
-        <li><a href="#" class="hover:text-white">EXPLORAR</a></li>
-        <li><a href="#" class="hover:text-white">EVENTOS</a></li>
-      </ul>
+        <a href="#" class="hover:text-white transition duration-200 ease-in-out"
+          >EVENTOS</a
+        >
+      </nav>
+
+      <!-- Menú lateral -->
+      <div
+        class="absolute top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-75 z-40 transition-transform transform sm:hidden"
+        [ngClass]="{
+          'translate-x-0': isMenuOpen,
+          '-translate-x-full': !isMenuOpen
+        }"
+      >
+        <div
+          class="p-4 flex justify-between items-center text-xl font-bold border-b border-gray-700 bg-gray-800"
+        >
+          <span>AMDC</span>
+          <button
+            (click)="toggleMenu()"
+            class="text-white text-2xl hover:text-gray-400 focus:outline-none"
+            aria-label="Cerrar menú"
+          >
+            &times;
+          </button>
+        </div>
+        <ul class="flex flex-col items-center space-y-4 py-4">
+          <li><a href="#" class="hover:text-white">HOME</a></li>
+          <li>
+            <a [routerLink]="['/lugares']" class="hover:text-white">LUGARES</a>
+          </li>
+          <li><a href="#" class="hover:text-white">EXPLORAR</a></li>
+          <li><a href="#" class="hover:text-white">EVENTOS</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -107,35 +124,40 @@
         @for (item of tLocalService.lugares(); track item.id) {
 
         <div
-          class="relative h-screen bg-cover bg-center z-0"
+          class="relative h-screen bg-cover bg-center rounded-lg shadow-lg overflow-hidden"
           style="background-image: url('{{ item.baner }}');"
+          data-aos="fade-up"
         >
-          <div class="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
+          <div class="absolute inset-0 bg-black bg-opacity-50"></div>
           <div
-            class="flex flex-col items-center justify-center h-full z-10 relative"
+            class="flex flex-col items-center justify-center h-full relative z-10 text-center text-white px-6"
           >
-            <h1 class="text-6xl font-bold text-white mb-4 text-center">
+            <h1 class="text-4xl lg:text-6xl font-bold mb-4">
               {{ item.nombre }}
             </h1>
-            <p class="text-2xl text-white mb-8 text-center">
-              {{ item.descripcion }}
-            </p>
+            <p class="text-lg lg:text-2xl mb-6">{{ item.descripcion }}</p>
             <div class="flex space-x-4">
               <button
-                [routerLink]="['/dashboard/sites/1']"
-                class="bg-white text-green-500 font-medium py-2 px-4 rounded-lg hover:bg-gray-200"
+                [routerLink]="['/lugares/', item.id]"
+                class="bg-white text-green-500 font-medium py-2 px-4 rounded-lg hover:bg-gray-200 transition"
                 aria-label="Explorar"
               >
                 Explorar
               </button>
-              <button
-                class="bg-green-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-green-600"
+              <!-- <button
+                class="bg-green-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-green-600 transition"
                 aria-label="Acerca de"
               >
                 Acerca de
-              </button>
+              </button> -->
             </div>
           </div>
+        </div>
+        }@empty {
+        <div
+          class="h-screen bg-gray-900 text-white flex items-center justify-center"
+        >
+          <h1 class="text-4xl font-bold">Cargando lugares...</h1>
         </div>
         }
       </section>
@@ -151,7 +173,8 @@
       </div>
     </section> -->
 
-      <section class="p-6 flex flex-wrap justify-center gap-4">
+      <!-- Section card1 -->
+      <!-- <section class="p-6 flex flex-wrap justify-center gap-4">
         <div class="bg-gray-900 py-16 text-white w-full">
           <div
             class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
@@ -159,12 +182,12 @@
             <app-card1 *ngFor="let tipo of tipos" [title]="tipo"> </app-card1>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Atracciones -->
       <!-- <section class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> -->
 
-      <section
+      <!-- <section
         class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
       >
         <div class="bg-gray-800 p-4 rounded">
@@ -178,7 +201,6 @@
             Descripción breve de la atracción 1.
           </p>
         </div>
-        <!-- Repeat for other attractions -->
         <div class="bg-gray-800 p-4 rounded">
           <img
             src="https://via.placeholder.com/50"
@@ -223,7 +245,7 @@
             Descripción breve de la atracción 5.
           </p>
         </div>
-      </section>
+      </section> -->
     </main>
 
     <!-- Footer -->

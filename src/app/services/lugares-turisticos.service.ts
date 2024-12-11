@@ -51,4 +51,16 @@ export class LugaresTuristicosService {
         });
     }
   }
+
+  // llamada para obtener un lugar turistico por id
+  GetLugarTuristicosById(id: string): Observable<LugaresTuristicos> {
+    return this.http
+      .get<LugaresTuristicos>(`${environment.apiUrl}/lugares-turisticos/${id}`)
+      .pipe(
+        catchError((error) => {
+          console.error('Error al obtener datos', error);
+          return of({} as LugaresTuristicos); // Retorna un objeto vacío en caso de error
+        })
+      );
+  }
 }

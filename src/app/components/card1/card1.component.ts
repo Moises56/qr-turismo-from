@@ -4,11 +4,12 @@ import { TitleComponent } from '@shared/title/title.component';
 import { Router, RouterModule } from '@angular/router';
 import { TipoLocalService } from '@services/tipo-local.service';
 import { TipoLocal } from '@interfaces/tipo-local';
+import { ParticulaNieveComponent } from '../particula-nieve/particula-nieve.component';
 
 @Component({
   selector: 'app-card1',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ParticulaNieveComponent],
   templateUrl: './card1.component.html',
   styleUrl: './card1.component.css',
 })

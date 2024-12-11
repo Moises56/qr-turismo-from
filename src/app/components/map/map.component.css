@@ -1,0 +1,39 @@
+/* 
+
+
+@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');  */
+
+#map {
+  height: 100vh;
+  width: 100%;
+}
+
+.cordenadas{
+    /* display: block;  */
+    /* width: 100%; */
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px #dee2e6 solid;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+}
+
+/* .cordenadas:hover{
+    border-color: #5ccedf;
+} */
+.cordenadas:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 .25rem  #5ccedfb5;
+}
